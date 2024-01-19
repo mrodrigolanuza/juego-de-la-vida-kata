@@ -19,4 +19,13 @@ describe('The World', ()=>{
             let world = World.create(ROWS, COLS);    
         }).toThrow(Error);
     }); 
+
+    it('should throw an exception with zero number of rows.', ()=>{
+        const ROWS: number = 0;
+        const COLS: number = 2;
+
+        expect(()=>{
+            let world = World.create(ROWS, COLS);    
+        }).toThrow(Error);
+    }); 
 });
