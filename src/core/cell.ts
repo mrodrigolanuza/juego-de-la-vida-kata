@@ -1,8 +1,8 @@
 export class Cell {
-    private status: boolean;
+    private isAlive: boolean;
 
     private constructor(initialStatus: boolean) {
-        this.status = initialStatus;    
+        this.isAlive = initialStatus;    
     }
 
     static createAlive(): Cell {
