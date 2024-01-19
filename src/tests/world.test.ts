@@ -1,3 +1,4 @@
+import { Cell } from "../core/cell";
 import { World } from "../core/world";
 
 describe('The World', ()=>{
@@ -34,7 +35,12 @@ describe('The World', ()=>{
         const COLS: number = 1;
 
         let world = World.create(ROWS, COLS);    
+        let nextGen = world.nextGeneration();
         
-        expect(world.nextGeneration()).toBe([1][1])
+        expect(nextGen.length).toBe(1); 
+        expect(nextGen[0].length).toBe(1); 
+        expect(nextGen[0][0]).toBeInstanceOf(Cell);
+        expect(nextGen[0][0].isAlive()).toBe(false);
+
     }); 
 });
