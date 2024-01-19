@@ -8,4 +8,11 @@ describe('The Cell', ()=>{
 		
         expect(cell).toBeInstanceOf(Cell); 
      });
+
+     it('should be asked about its state of life.', ()=>{
+
+		let cell = Cell.createAlive();
+		
+        expect(cell.isAlive()).toBe(true); 
+     });
 });
