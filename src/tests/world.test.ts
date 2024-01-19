@@ -28,4 +28,13 @@ describe('The World', ()=>{
             let world = World.create(ROWS, COLS);    
         }).toThrow(Error);
     }); 
+
+    it('should create 1x1 world with only a dead cell.', ()=>{
+        const ROWS: number = 1;
+        const COLS: number = 1;
+
+        let world = World.create(ROWS, COLS);    
+        
+        expect(world.nextGeneration()).toBe([1][1])
+    }); 
 });
