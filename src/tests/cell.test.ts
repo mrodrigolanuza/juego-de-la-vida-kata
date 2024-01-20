@@ -26,4 +26,12 @@ describe('The Cell', () => {
 
 		expect(cell.isAlive()).toBe(true);
 	});
+
+    it('should be set in dead state.', () => {
+		const cell = Cell.createAlive();
+
+		cell.setDeadState();
+
+		expect(cell.isAlive()).toBe(false);
+	});
 });
