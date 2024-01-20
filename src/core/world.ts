@@ -33,7 +33,8 @@ export class World {
         for (let row = 0; row < this.ROWS; row++) {
             for (let col = 0; col < this.COLS; col++) {
                 newGenWorld[row][col].setDeadState();
-                if(this.hasCellIdealNumberOfLivingNeighbours(row, col)){
+                if(this.hasLivingCellIdealRangeNumberOfLivingNeighbours (row, col) ||
+                   this.hasDeadCellThreeLivingNeighbours(row, col)){
                     newGenWorld[row][col].setLivingState();
                 }
             }
@@ -42,9 +43,17 @@ export class World {
         return newGenWorld;
 	}
 
-    private hasCellIdealNumberOfLivingNeighbours(row: number, col: number): boolean {
+    private hasDeadCellThreeLivingNeighbours(row: number, col: number): boolean {
         const totalLivingNeighbour = this.numberLivingNeighboursOfCell(row, col);
-        if ((totalLivingNeighbour == 2) || (totalLivingNeighbour == 3)) {
+        if (!this.world[row][col].isAlive() && (totalLivingNeighbour == 3)) {
+            return true;
+        }
+        return false;
+    }
+
+    private hasLivingCellIdealRangeNumberOfLivingNeighbours(row: number, col: number): boolean {
+        const totalLivingNeighbour = this.numberLivingNeighboursOfCell(row, col);
+        if (this.world[row][col].isAlive() && ((totalLivingNeighbour == 2) || (totalLivingNeighbour == 3))) {
             return true;
         }
         return false;
@@ -72,7 +81,7 @@ export class World {
             }
         }
         //Derecha
-        if((col + 1) < this.ROWS){
+        if((col + 1) < this.COLS){
             if(this.world[row][col + 1].isAlive()){
                 livingNeighbours++;
             }

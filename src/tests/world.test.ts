@@ -80,13 +80,13 @@ describe('The World', () => {
         expect(nextGen[1][4].isAlive()).toBe(false);
 	});
 
-    //Cualquier célula viva con más de tres vecinos muere por superpoblación.
     it('when a living cell has more than three living neighbours then the cell is dead by overpopulation.', () => {
 		const world = create4x8InitialWorld();
 		world.setLivingCell(1, 4);
         world.setLivingCell(0, 4); //Neighbour
         world.setLivingCell(1, 5); //Neighbour
         world.setLivingCell(2, 4); //Neighbour
+        world.setLivingCell(1, 3); //Neighbour
         
         const nextGen = world.nextGeneration();
         
