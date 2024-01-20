@@ -1,10 +1,3 @@
-/*
-- Cualquier célula viva con menos dos vecinos muere por subpoblación.
-- Cualquier célula viva con más de tres vecinos muere por superpoblación.
-- Cualquier célula viva con dos o tres vecinos sigue viva en la siguiente generación.
-- Cualquier célula muerta con exactamente tres vecinos vivos revive nuevamente.
-*/
-
 import { Cell } from '../core/cell';
 import { World } from '../core/world';
 
@@ -103,6 +96,18 @@ describe('The World', () => {
 		const nextGen = world.nextGeneration();
 
 		expect(nextGen[1][4].isAlive()).toBe(true);
+	});
+
+    //- Cualquier célula muerta con exactamente tres vecinos vivos revive nuevamente.
+    it('when a dead cell with exactely three living neighbours then the cell is alive again.', () => {
+		const world = create4x8InitialWorld();
+		world.setLivingCell(0, 4); //Neighbour
+		world.setLivingCell(1, 5); //Neighbour
+        world.setLivingCell(2, 4); //Neighbour
+
+		const nextGen = world.nextGeneration();
+
+		expect(nextGen[1][4].isAlive()).toBe(false);
 	});
 });
 
