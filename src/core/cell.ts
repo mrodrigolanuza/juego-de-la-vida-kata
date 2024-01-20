@@ -23,7 +23,7 @@ export class Cell {
 		this.stateOfLive = true;
 	}
 
-    setDeadState(): void {
+	setDeadState(): void {
 		this.stateOfLive = false;
 	}
 }
