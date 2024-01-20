@@ -15,7 +15,11 @@ export class Cell {
         return new Cell(dead);
     }
 
-    isAlive (){
+    isAlive(): boolean {
         return this.stateOfLive;
+    }
+
+    setLivingState(): void{
+        this.stateOfLive = true;
     }
 }
