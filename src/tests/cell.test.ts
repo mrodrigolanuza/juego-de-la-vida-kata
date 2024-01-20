@@ -22,4 +22,13 @@ describe('The Cell', ()=>{
 		
         expect(cell.isAlive()).toBe(true); 
      });
+
+     it('should be set in living state.', ()=>{
+
+		let cell = Cell.createDead();
+		
+        cell.setLivingState();
+
+        expect(cell.isAlive()).toBe(true)
+     });
 });
