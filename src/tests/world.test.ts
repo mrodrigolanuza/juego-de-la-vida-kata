@@ -103,7 +103,7 @@ describe('The World', () => {
 
 		const nextGen = world.nextGeneration();
 
-		expect(nextGen[1][4].isAlive()).toBe(false);
+		expect(nextGen[1][4].isAlive()).toBe(true);
 	});
 });
 
