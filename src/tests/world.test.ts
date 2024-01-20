@@ -98,7 +98,6 @@ describe('The World', () => {
 		expect(nextGen[1][4].isAlive()).toBe(true);
 	});
 
-    //- Cualquier célula muerta con exactamente tres vecinos vivos revive nuevamente.
     it('when a dead cell with exactely three living neighbours then the cell is alive again.', () => {
 		const world = create4x8InitialWorld();
 		world.setLivingCell(0, 4); //Neighbour
@@ -107,7 +106,7 @@ describe('The World', () => {
 
 		const nextGen = world.nextGeneration();
 
-		expect(nextGen[1][4].isAlive()).toBe(false);
+		expect(nextGen[1][4].isAlive()).toBe(true);
 	});
 });
 
