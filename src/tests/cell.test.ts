@@ -1,34 +1,29 @@
 import { Cell } from '../core/cell';
 
-describe('The Cell', ()=>{
+describe('The Cell', () => {
+	it('should be created alive.', () => {
+		const cell = Cell.createAlive();
 
-	it('should be created alive.', ()=>{
+		expect(cell.isAlive()).toBe(true);
+	});
 
-		let cell = Cell.createAlive();
-		
-        expect(cell.isAlive()).toBe(true); 
-     }); 
+	it('should be created dead.', () => {
+		const cell = Cell.createDead();
 
-     it('should be created dead.', ()=>{
+		expect(cell.isAlive()).toBe(false);
+	});
 
-		let cell = Cell.createDead();
-		
-        expect(cell.isAlive()).toBe(false); 
-     }); 
-    
-    it('should be asked about its state of life.', ()=>{
+	it('should be asked about its state of life.', () => {
+		const cell = Cell.createAlive();
 
-		let cell = Cell.createAlive();
-		
-        expect(cell.isAlive()).toBe(true); 
-     });
+		expect(cell.isAlive()).toBe(true);
+	});
 
-     it('should be set in living state.', ()=>{
+	it('should be set in living state.', () => {
+		const cell = Cell.createDead();
 
-		let cell = Cell.createDead();
-		
-        cell.setLivingState();
+		cell.setLivingState();
 
-        expect(cell.isAlive()).toBe(true)
-     });
+		expect(cell.isAlive()).toBe(true);
+	});
 });
