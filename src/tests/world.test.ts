@@ -93,7 +93,6 @@ describe('The World', () => {
 		expect(nextGen[1][4].isAlive()).toBe(false);
 	});
 
-    //- Cualquier célula viva con dos o tres vecinos sigue viva en la siguiente generación.
     it('when a living cell with two or three living neighbours then the cell keeps living the next generation.', () => {
 		const world = create4x8InitialWorld();
 		world.setLivingCell(1, 4);
