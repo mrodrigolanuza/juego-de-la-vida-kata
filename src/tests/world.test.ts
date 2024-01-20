@@ -10,10 +10,7 @@ import { World } from '../core/world';
 
 describe('The World', () => {
 	it('should create a 2D World with positive colums and rows number.', () => {
-		const ROWS: number = 4;
-		const COLS: number = 8;
-
-		const world = World.create(ROWS, COLS);
+		const world = create4x8InitialWorld();
 
 		expect(world).toBeInstanceOf(World);
 	});
@@ -64,10 +61,8 @@ describe('The World', () => {
 	});
 
     it('should create initial 4x8 world with only a living cell.', () => {
-		const ROWS: number = 4;
-		const COLS: number = 8;
-
-		const world = World.create(ROWS, COLS);
+		const world = create4x8InitialWorld();
+        
         const actualGen = world.currentGeneration();
         world.setLivingCell(1,4);
 
@@ -77,10 +72,7 @@ describe('The World', () => {
 	});
 
     it('when a living cell has less than two living neighbours then the cell is dead by underpopulation.', () => {
-		const ROWS: number = 4;
-		const COLS: number = 8;
-
-		const world = World.create(ROWS, COLS);
+		const world = create4x8InitialWorld();
 		world.setLivingCell(1, 4);
         
         const nextGen = world.nextGeneration();
@@ -88,3 +80,11 @@ describe('The World', () => {
         expect(nextGen[1][4].isAlive()).toBe(false);
 	});
 });
+function create4x8InitialWorld() {
+    const ROWS: number = 4;
+    const COLS: number = 8;
+
+    const world = World.create(ROWS, COLS);
+    return world;
+}
+

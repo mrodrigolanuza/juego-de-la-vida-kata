@@ -2,9 +2,13 @@ import { Cell } from './cell';
 
 export class World {
 	private world: Cell[][] = [];
+    private ROWS: number = 0;
+    private COLS: number = 0;
 
 	private constructor(rows: number, cols: number) {
 		this.world = this.createWorldWithDeadCells(rows, cols);
+        this.ROWS = rows;
+        this.COLS = cols;
 	}
     
 	static create(rows: number, cols: number): World {
@@ -24,10 +28,10 @@ export class World {
 	}
 
     nextGeneration() {
-        let newGenWorld = this.createWorldWithDeadCells(this.world.length, this.world[0].length);
+        let newGenWorld = this.createWorldWithDeadCells(this.ROWS, this.COLS);
 
-        for (let row = 0; row < this.world.length; row++) {
-            for (let col = 0; col < this.world[0].length; col++) {
+        for (let row = 0; row < this.ROWS; row++) {
+            for (let col = 0; col < this.COLS; col++) {
                 const totalLivingNeighbour = this.numberLivingNeighboursOfCell(row, col);
                 newGenWorld[row][col].setDeadState();
                 if((totalLivingNeighbour == 2)||(totalLivingNeighbour == 3)){
