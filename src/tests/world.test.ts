@@ -92,6 +92,19 @@ describe('The World', () => {
 
 		expect(nextGen[1][4].isAlive()).toBe(false);
 	});
+
+    //- Cualquier célula viva con dos o tres vecinos sigue viva en la siguiente generación.
+    it('when a living cell with two or three living neighbours then the cell keeps living the next generation.', () => {
+		const world = create4x8InitialWorld();
+		world.setLivingCell(1, 4);
+		world.setLivingCell(1, 5); //Neighbour
+		world.setLivingCell(2, 4); //Neighbour
+		
+
+		const nextGen = world.nextGeneration();
+
+		expect(nextGen[1][4].isAlive()).toBe(false);
+	});
 });
 
 function create4x8InitialWorld() {
