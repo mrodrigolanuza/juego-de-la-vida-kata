@@ -22,4 +22,8 @@ export class Cell {
 	setLivingState(): void {
 		this.stateOfLive = true;
 	}
+
+    setDeadState(): void {
+		this.stateOfLive = false;
+	}
 }
